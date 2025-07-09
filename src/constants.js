@@ -1,0 +1,1 @@
+export const DB_NAME="videotube" //data base ka naam de diya aur export kar diya bcoz har data base ka naam to hogahi
