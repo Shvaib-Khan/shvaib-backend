@@ -6,12 +6,22 @@ import dotenv from 'dotenv'
 // import { DB_NAME } from './constants'; in dono ko comment kar diya kyuki is method me connection to bahar kar rhr hai bas yaha connection import kar rhe hai isliye aur ye wha import kiya hai
 
 import connectDB from './db/index.js';
+import { app } from './app.js';
 
 dotenv.config({
     path: './env'
 })
 
 connectDB()
+.then(()=>{
+    app.listen(process.env.PORT || 8000, ()=>{
+        console.log(`Server is running at port ${process.env.PORT}`);
+
+    })
+})
+.catch((err)=>{
+    console.log("MONGO DB connection failed !!!",err);
+})
 /*ye chal to jaega but mazaa nhi aa rha import hai aur require bhi hamari consistancy kharab kar rha hai to require wale ko comment karenge aur import karenge lekin inport karne ke baad config bhi karna padega nhi to nhi chalega*/
 
 
